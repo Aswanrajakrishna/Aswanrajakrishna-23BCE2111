@@ -1,0 +1,31 @@
+show databases;
+create database vit;
+use vit;
+create table cs(
+marks int ,
+nam varchar(32),
+id int,
+attendence float
+);
+show tables from vit;
+select * from cs;
+INSERT INTO cs VALUES (76, 'isha', 3, 84.0);
+create table rs(
+paper_count int ,
+nam varchar(32),
+id int,
+attendence float
+);
+create table teachers(
+salary int ,
+nam varchar(32),
+id int,
+attendence float
+);
+select * from cs;
+insert into rs values(0,'Jhon',1,72.1);
+alter table rs add(
+summa date,inter text
+);
+update rs set id=5 where nam='Jhon';
+update cs set attendence=attendence+1.5;
