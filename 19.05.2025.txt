@@ -1,0 +1,64 @@
+# drop
+show databases;
+use vit;
+show tables;
+drop table teachers;
+desc rs;
+alter table rs drop column inter;
+
+#delete
+CREATE TABLE Worker (
+	WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	FIRST_NAME CHAR(25),
+	LAST_NAME CHAR(25),
+	SALARY INT(15),
+	JOINING_DATE DATETIME,
+	DEPARTMENT CHAR(25)
+);
+use vit;
+INSERT INTO Worker 
+	(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+		(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+		(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+		(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+		(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+		(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+		(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'),
+		(007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'),
+		(008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin');
+	select * from worker;
+    delete from worker;
+    delete from worker where salary<=200000;
+    delete from worker where DEPARTMENT='hr';
+    
+    #truncate
+    
+    truncate worker;
+ # savepoint rollback
+ use vit;
+ select * from abcc;
+ create table abcc(
+ id int,
+ nam varchar(25));
+ start transaction;
+ insert into abcc values(1,'aswan');
+ savepoint a1;
+  insert into abcc values(2,'raja');
+  savepoint a2;
+  delete from abcc where id=2;
+  rollback to a2;
+#Logical operations
+  desc worker;
+  select * from worker;
+  select first_name as name from worker where salary<=300000;
+  select first_name as name,department from worker where salary=300000;
+  select first_name as name ,department from worker where salary>=300000; 
+  select first_name as name ,department from worker where salary!=300000 and department='admin';
+  select first_name as name ,department from worker where salary!=300000 or department='admin';
+  select first_name,department from worker where salary<200000 and department='hr';
+  select first_name as name ,department from worker where salary<200000 and (department='admin' or department='hr');
+  select first_name as name ,salary,department from worker where (salary>=100000 and salary<=300000)and (department='admin' or department='account');
+  
+  select * from worker where department not in ('hr','admin');
+  select * from worker where department  in ('hr','admin');
+  select * from worker where worker_id in(2,4,6,8) and (department='hr'or department='admin') and salary=max(salary);
