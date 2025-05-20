@@ -1,0 +1,46 @@
+create database amazon;
+use amazon;
+CREATE TABLE category (
+    category_id INT  PRIMARY KEY,
+    category_name VARCHAR(100) 
+);
+CREATE TABLE products (
+    product_id INT primary key,
+    product_name VARCHAR(100) ,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES category(category_id) on delete cascade
+);
+drop table products;
+select * from products;
+
+INSERT INTO category (category_id, category_name) VALUES
+(1, 'Electronics'),
+(2, 'Clothing'),
+(3, 'Books'),
+(4, 'Home & Kitchen');
+
+
+INSERT INTO products (product_id, product_name, category_id) VALUES
+(101, 'Smartphone', 1),
+(102, 'Laptop', 1),
+(103, 'T-shirt', 2),
+(104, 'Cookbook', 3),
+(105, 'Blender', 4),
+(106, 'Jeans', 2),
+(107, 'Tablet', 1),
+(108, 'Fiction Novel', 3);
+
+insert into products values(110,'bed',5);
+insert into products values(111,'Mixer',4);
+select * from products;
+
+delete from products where product_id=109;
+delete from category where category_id=3;
+
+create table dummy(
+S int unique);
+insert into dummy values(3),(2);
+select * from products;
+
+ALTER TABLE products DROP FOREIGN KEY category_id;
+alter table products add check (category_id>0);
