@@ -1,0 +1,69 @@
+show databases;
+use vit;
+show tables;
+select * from worker where worker_id between 1 and 7;
+select * from worker where worker_id between 1 and 6 and department  in('account');
+select * from worker where worker_id between 1 and 7 and department not in('admin','account');
+select max(salary) from worker;
+select min(salary) from worker;
+select avg(salary) from worker;
+select sum(salary) from worker;
+select count(salary) from worker;
+
+desc worker;
+create table worker1(worker_id int ,first_name varchar(10),last_name varchar(10),salary int,joining_date datetime,department varchar(15));
+INSERT INTO worker1 VALUES (1, 'John',   'Doe',     50000, '2021-01-15 09:00:00', 'HR');
+INSERT INTO worker1 VALUES (2, 'Alice',  'Smith',   60000, '2022-03-22 10:30:00', 'Finance');
+INSERT INTO worker1 VALUES (3, 'Bob',    'Brown',   55000, '2020-11-10 08:45:00', 'IT');
+INSERT INTO worker1 VALUES (4, 'Emma',   'Davis',   62000, '2023-05-01 09:15:00', 'Marketing');
+INSERT INTO worker1 VALUES (5, 'Chris',  'Wilson',  48000, '2019-07-18 09:05:00', 'Sales');
+INSERT INTO worker1 VALUES (6, 'David',  'Miller',  70000, '2021-09-12 08:50:00', 'IT');
+INSERT INTO worker1 VALUES (7, 'Linda',  'Taylor',  53000, '2022-12-01 09:40:00', 'HR');
+select * from worker1;
+
+select department from worker union select department from worker1;
+INSERT INTO Worker1 VALUES
+		(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+		(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+		(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+		(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+		(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+		(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'),
+		(007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'),
+		(008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin');
+
+select department from worker union all select department from worker1;
+select distinct(department) from worker1;
+
+select * from worker where department='Account' union select * from worker1 where (department='it' or department='admin'); 
+select * from worker where department='Account' union all select * from worker1 where (department='it' or department='account');
+select first_name as name,salary,
+case
+when salary>=300000 then "High Income"
+when salary <300000 && salary>=100000 then "Middle Layer"
+when salary <100000 then "Poor Layer"
+else 'data not found...'
+end
+As 'Status'
+from worker1 order by salary;
+select first_name as 'Name',salary,
+case
+when salary>=300000 then "High Income"
+when salary <300000 && salary>=100000 then "Middle Layer"
+when salary <100000 then "Poor Layer"
+else 'data not found...'
+end
+As 'Status'
+from worker1 order by 
+first_name asc,
+salary desc;
+select * from worker1 where first_name like 'g%i_a';
+select * from worker1 where first_name like 'a%';
+select * from worker1 where first_name like '%i%a';
+select * from worker1 where first_name like '_a%';
+select * from worker1 where first_name like 'g%a';
+
+
+create view one as select * from worker where department='admin';
+create or replace view one as select * from worker where department='admin' or department='hr';
+select * from one;
