@@ -1,0 +1,58 @@
+use vit;
+desc table worker;
+select * from worker;
+create  view  onee as select count(department) from worker;
+select count(department),department from worker
+group by department 
+order by department asc;
+
+select count(department),department from worker
+group by department
+having count(department)>3 
+order by department asc;
+
+
+select first_name as 'Name',salary from worker
+order by salary desc limit 2 offset 3; 
+
+select first_name as 'Senior' from worker where joining_date=(select min(joining_date) from worker);
+select first_name as 'junior' from worker where joining_date=(select max(joining_date) from worker);
+select first_name as 'Above average people' from worker where salary>=(select avg(salary) from worker);
+
+
+CREATE TABLE student (
+    s_id INT,
+    s_name VARCHAR(25)
+);
+INSERT INTO student VALUES
+(1, 'Alice'),
+(2, 'Bob'),
+(3, 'Charlie');
+
+
+CREATE TABLE address (
+    s_id INT,
+    s_address VARCHAR(25)
+);
+
+
+INSERT INTO address VALUES
+(1, 'New York'),
+(2, 'Los Angeles'),
+(3, 'Chicago'),
+(4,'Aswan ');
+
+select * from student cross join address;
+select * from student inner join address;
+select * from student natural join address;
+select * from student full outer join address;
+desc worker;
+
+SELECT DISTINCT salary
+FROM worker w1
+WHERE 4 = (
+    SELECT COUNT(DISTINCT salary)
+    FROM worker w2
+    WHERE w2.salary > w1.salary
+);
+
