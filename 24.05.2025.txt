@@ -1,0 +1,52 @@
+package One;
+
+public class Hi{
+	public static void main(String[] args){
+		
+		try {
+		    Class.forName("com.mysql.cj.jdbc.Driver");
+		    Connection con = DriverManager.getConnection(
+		        "jdbc:mysql://localhost:3306/vit", "root", "Aa@@swan2306");
+		    System.out.println(con);
+		} catch (Exception e) {
+		    System.out.println("Sorry for inconvience's pls check the credentials");
+		}
+	}
+}
+
+
+
+
+package crud_operation;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class CRUD_Operation {
+
+	public static void main(String[] args) {
+		CRUD_Operation objTest=new CRUD_Operation();
+  
+	objTest.create_data("103", "manoj", 55);
+	objTest.create_data("104", "karthick", 65);
+    
+}
+
+public void create_data(String sl_no,String name,int mark){
+	DB_Connection obj_DB_Connection=new DB_Connection();
+	Connection connection=obj_DB_Connection.get_connection();
+	PreparedStatement ps=null;
+	try {
+		String query="insert into student values (?,?,?)";
+		ps=connection.prepareStatement(query);
+		ps.setString(1, sl_no);
+		ps.setString(2, name);
+		ps.setInt(3, mark);
+		System.out.println(ps);
+		ps.executeUpdate();
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+}
+
+}
