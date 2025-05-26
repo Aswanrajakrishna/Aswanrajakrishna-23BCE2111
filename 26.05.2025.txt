@@ -1,0 +1,64 @@
+package crud_operation;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class CRUD_operation {
+
+	public static void main(String[] args) {
+		CRUD_operation objTest=new CRUD_operation();
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter the number of students to insert: ");
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+			System.out.print("Enter student sl no: ");
+int n=sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+			System.out.print("Enter student sl no: ");
+			int  sl_no=sc.nextInt();
+			sc.nextLine();
+			System.out.print("Enter the student's name: ");
+			String name=sc.nextLine();
+			objTest.create_data(sl_no, name);
+		}
+	    sc.close();
+    
+}
+
+public void create_data(int sl_no,String name){
+	DB_connection obj_DB_Connection=new DB_connection();
+	Connection connection=obj_DB_Connection.get_connection();
+	PreparedStatement ps=null;
+	try {
+String query="insert into student values (?,?)";
+		ps=connection.prepareStatement(query);
+		ps.setInt(1, sl_no);
+		ps.setString(2, name);
+		System.out.println(ps);
+		ps.executeUpdate();
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+}
+public void create_data(int sl_no,String name){
+	DB_connection obj_DB_Connection=new DB_connection();
+	Connection connection=obj_DB_Connection.get_connection();
+	PreparedStatement ps=null;
+	try {
+String query="insert into student values (?,?)";
+		ps=connection.prepareStatement(query);
+		ps.setInt(1, sl_no);
+		ps.setString(2, name);
+		System.out.println(ps);
+		ps.executeUpdate();
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+}
+
+}
+
+}
