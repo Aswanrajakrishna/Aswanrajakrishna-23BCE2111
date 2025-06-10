@@ -1,0 +1,54 @@
+import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
+
+public class Tester {
+    public static void main(String[] args) {
+        // Creating a Mongo client
+        MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+        MongoDatabase database = mongoClient.getDatabase("myDb");
+
+        // Get the collection
+        MongoCollection<Document> collection = database.getCollection("sampleCollection");
+
+        // Find all documents
+        collection.deleteOne(Filters.eq("First_Name", "Mahesh"));
+        System.out.println("Document deleted.");
+        System.out.println("***Documents***");
+
+        // Select a particular document
+        FindIterable<Document> documents = collection.find();
+
+        for (Document document : documents) {
+            System.out.println(document);
+        }
+    }
+}
+import com.mongodb.client.*;
+import org.bson.Document;
+
+public class Tester {
+    public static void main(String[] args) {
+        // Creating a Mongo client
+        MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+        MongoDatabase database = mongoClient.getDatabase("myDb");
+
+        // Get the collection
+        MongoCollection<Document> collection = database.getCollection("sampleCollection");
+
+        // Find two documents
+        FindIterable<Document> allDocuments = collection.find().limit(2);
+
+        for (Document document : allDocuments) {
+            System.out.println(document);
+        }
+    }
+}
+FindIterable<Document> allDocuments = collection.find();
+
+        for (Document document : allDocuments) {
+            int n = (int) document.get("_id");
+            if (n % 2 == 0) {
+                System.out.println(document);
+            }
+        }
