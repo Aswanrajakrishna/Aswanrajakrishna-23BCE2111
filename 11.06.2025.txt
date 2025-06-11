@@ -1,0 +1,66 @@
+db.products.find({$and:[{price:{$lte:900}},{price:{$gte:700}}]},{name:1,_id:0,price:1})
+
+import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
+
+public class Tester {
+    public static void main(String[] args) {
+        // Create MongoDB client
+        MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+        MongoDatabase database = mongoClient.getDatabase("Test");
+        MongoCollection<Document> collection = database.getCollection("products");
+
+        // Filter: price >= 700 AND price <= 900
+        Bson filter = Filters.and(
+            Filters.gte("price", 700),
+            Filters.lte("price", 900)
+        );
+
+        // Projection: include 'name' and 'price', exclude '_id'
+        Bson projection = new Document("name", 1)
+                                .append("price", 1)
+                                .append("_id", 0);
+
+        // Execute the query
+        FindIterable<Document> results = collection.find(filter).projection(projection);
+
+        // Print the results
+        for (Document doc : results) {
+            System.out.println(doc);
+        }
+    }
+}
+db.sales.aggregate([
+  {
+    $group: {
+      _id: "$item",
+      maxPrice: { $max: "$price" }
+    }
+  }
+])
+import com.mongodb.client.*;
+import org.bson.Document;
+import java.util.Arrays;
+
+public class Tester {
+    public static void main(String[] args) {
+        // MongoDB connection
+        MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+        MongoDatabase database = mongoClient.getDatabase("yourDatabaseName");
+        MongoCollection<Document> collection = database.getCollection("sales");
+
+        // Aggregation pipeline: group by 'item' and get max price
+        AggregateIterable<Document> result = collection.aggregate(Arrays.asList(
+            new Document("$group", new Document("_id", "$item")
+                                        .append("maxPrice", new Document("$max", "$price")))
+        ));
+
+        // Print results
+        for (Document doc : result) {
+            System.out.println(doc);
+        }
+    }
+}
+
+
