@@ -1,0 +1,154 @@
+[{
+  "_id": {
+    "$oid": "684ad47254365515a38bfb57"
+  },
+  "Name": "Aswan",
+  "RegNo": "1",
+  "Email": "aswan@gmail.com",
+  "Department": "CSE",
+  "Marks": {
+    "Maths": 87,
+    "Physics": 70,
+    "Chemistry": 85
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a050"
+  },
+  "Name": "Isha Verma",
+  "RegNo": "IN1002",
+  "Email": "isha.verma@example.com",
+  "Department": "ECE",
+  "Marks": {
+    "Maths": 72,
+    "Physics": 88,
+    "Chemistry": 79
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a051"
+  },
+  "Name": "Rahul Kumar",
+  "RegNo": "IN1003",
+  "Email": "rahul.kumar@example.com",
+  "Department": "EEE",
+  "Marks": {
+    "Maths": 90,
+    "Physics": 85,
+    "Chemistry": 91
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a052"
+  },
+  "Name": "Priya Singh",
+  "RegNo": "IN1004",
+  "Email": "priya.singh@example.com",
+  "Department": "IT",
+  "Marks": {
+    "Maths": 68,
+    "Physics": 75,
+    "Chemistry": 70
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a053"
+  },
+  "Name": "Rohan Patel",
+  "RegNo": "IN1005",
+  "Email": "rohan.patel@example.com",
+  "Department": "MECH",
+  "Marks": {
+    "Maths": 77,
+    "Physics": 72,
+    "Chemistry": 69
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a054"
+  },
+  "Name": "Sneha Nair",
+  "RegNo": "IN1006",
+  "Email": "sneha.nair@example.com",
+  "Department": "CIVIL",
+  "Marks": {
+    "Maths": 82,
+    "Physics": 79,
+    "Chemistry": 85
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a055"
+  },
+  "Name": "Vikram Das",
+  "RegNo": "IN1007",
+  "Email": "vikram.das@example.com",
+  "Department": "CSE",
+  "Marks": {
+    "Maths": 88,
+    "Physics": 91,
+    "Chemistry": 84
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a056"
+  },
+  "Name": "Ananya Reddy",
+  "RegNo": "IN1008",
+  "Email": "ananya.reddy@example.com",
+  "Department": "ECE",
+  "Marks": {
+    "Maths": 74,
+    "Physics": 81,
+    "Chemistry": 78
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a057"
+  },
+  "Name": "Karthik Iyer",
+  "RegNo": "IN1009",
+  "Email": "karthik.iyer@example.com",
+  "Department": "IT",
+  "Marks": {
+    "Maths": 79,
+    "Physics": 73,
+    "Chemistry": 77
+  }
+},
+{
+  "_id": {
+    "$oid": "684d74adfc62edfb4d07a058"
+  },
+  "Name": "Pooja Joshi",
+  "RegNo": "IN1010",
+  "Email": "pooja.joshi@example.com",
+  "Department": "EEE",
+  "Marks": {
+    "Maths": 83,
+    "Physics": 87,
+    "Chemistry": 80
+  }
+},
+{
+  "_id": {
+    "$oid": "684fbc3fce434859ae0c4fc9"
+  },
+  "Name": "rajakrishna",
+  "RegNo": "IN1011",
+  "Email": "rajakrish@gmail.com",
+  "Department": "CSE",
+  "Marks": {
+    "Maths": 74,
+    "Physics": 88,
+    "Chemistry": 95
+  }
+}]
